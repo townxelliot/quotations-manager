@@ -1,0 +1,7 @@
+class: AuthDb
+parameters:
+  model: User
+  username_field: username
+  password_field: password
+  access_log_field: last_access
+  hash_algorithm: sha1

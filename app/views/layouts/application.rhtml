@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>quotations manager</title>
+  <%= stylesheet_link_tag 'base' %>
+  <%= javascript_include_tag "prototype" %>
+  <%= javascript_include_tag "effects" %>
+  <%= javascript_include_tag "extras" %>
+</head>
+<body>
+
+<div id="menu">
+<h1>Menu</h1>
+<p><%= link_to "Person list", :controller => 'people' %></p>
+<p><%= link_to "New person", :controller => 'people', :action => 'new' %></p>
+<p><%= link_to "Categories", :controller => 'categories' %></p>
+<% if session['logged_in'] %>
+<p><%= link_to "Logout", :action => 'logout' %></p>
+<% else %>
+<p><%= link_to "Login", :action => 'login' %></p>
+<% end %>
+<!-- TODO: search link -->
+<!-- TODO: backup -->
+</div>
+
+<div id="content">
+
+<% if !(flash[:notice].nil?) %>
+<p class='notice'><%= flash[:notice] %></p>
+<% end %>
+
+<%= @content_for_layout %>
+</div>
+
+</body>
+</html>

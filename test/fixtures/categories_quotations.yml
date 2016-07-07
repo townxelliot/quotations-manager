@@ -1,0 +1,21 @@
+work_opinion_to_work_cat:
+  quotation_id: 1
+  category_id: 1
+homelife_summary_to_home_cat:
+  quotation_id: 2
+  category_id: 3
+importance_of_religion_to_religion_cat:
+  quotation_id: 3
+  category_id: 2
+home_hobbies_to_work_cat:
+  quotation_id: 4
+  category_id: 1
+home_hobbies_to_home_cat:
+  quotation_id: 4
+  category_id: 3
+garden_likes_to_home_cat:
+  quotation_id: 5
+  category_id: 3
+work_dislike_to_work_cat:
+  quotation_id: 6
+  category_id: 1

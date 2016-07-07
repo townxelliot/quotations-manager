@@ -1,0 +1,45 @@
+<h1>Quotations for <%= @person.name %><%= "/%s" % @category.name if @category %></h1>
+
+<p>
+<%= link_to "Add quotation for person", :action => 'show_with_new_q_form', :id => @person,
+:page => @page, :sort_order => @sort_order %>
+</p>
+
+<% if @quotation_pages.page_count > 1 %>
+<p><strong>Show page:</strong> 
+<%= pagination_links(@quotation_pages, 
+:params => { :controller => 'people', :action => 'show', :id => @person, 
+:category_id => @category_id, :sort_order => @sort_order } ) %>
+</p>
+<% end %>
+
+<div id="filter_form">
+<%= form_tag({:action => 'show', :id => @person.id}, 
+{:method => :get}) %>
+
+<div id="filter_form_left">
+<p>Show quotations in category: 
+<select name="category_id" onchange="this.form.submit()">
+<option value="">Any</option>
+<%= options_from_collection_for_select @sorted_categories, 'id', 'name', @category_id %>
+</select>
+</p>
+</div>
+
+<div id="filter_form_right">
+<p>Sort by <strong>Recorded on</strong> in 
+<select name="sort_order" onchange="this.form.submit()">
+<%= options_for_select({"ascending" => "ASC", "descending" => "DESC"}, [@sort_order]) %>
+</select> order</p>
+</div>
+
+<%= end_form_tag %>
+</div>
+
+<div id="quotations">
+<%= render(:partial => "quotations/new") if @new_quotation_requested %>
+<%= render(:partial => "quotations/edit") if @edit_quotation_requested %>
+
+<%= render :partial => "quotations/list", 
+:locals => { :quotations => @quotations, :page => @page, :show_person => false } %>
+</div>

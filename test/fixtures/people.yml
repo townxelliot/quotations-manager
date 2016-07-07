@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+elliot:
+  id: 1
+  first_name: Elliot
+  last_name: Smith
+john:
+  id: 2
+  first_name: John
+  last_name: Smith
+tony:
+  id: 3
+  first_name: Tony
+  last_name: Marston

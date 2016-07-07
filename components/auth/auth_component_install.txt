@@ -1,0 +1,99 @@
+***
+Drop the auth directory into components in your application
+
+***
+At the moment, to get the libraries to load, I had to manually append 
+the directory to ADDITIONAL_LOAD_PATHS in environment.rb, i.e. I added
+  components/auth/lib
+
+***
+Add the following line to the top of controllers/application.rb:
+  include AuthFactory
+
+***
+In controllers where you want to protect actions, use a before_filter at the top, e.g.:
+  before_filter :authorize, :except => [:index, :list, :show]
+or
+  before_filter :authorize, :only => [:destroy]
+  
+If you want to filter before every action, add the before_filter call to the application.rb
+controller class, i.e.:
+  before_filter :authorize
+You might want to do this if you have a lot of controllers
+
+***
+Either create a new model to authenticate against, with a username and password 
+field (you don't have to use these names for the fields, as it's configurable); 
+or decide on an existing model to authenticate against
+
+If using the built-in AuthDb class:
+
+Optionally you can provide a field with data type DATETIME (in MySQL, at least) and use
+this to record a user's last access time; set the field to record this in with the
+last_access parameter in the auth_config.yml file
+
+You can also use hashed passwords in the database, and just need to tell the AuthDb
+class which hash to use by supplying a hash_algorithm parameter
+
+***
+If login is successful, the following session variables are created:
+  logged_in
+  username
+
+***
+Configure the AuthDb authentication system in auth/auth_config.yml:
+
+class: name of the Authenticator class you want to use
+model: name of the model to use for checking of username/password
+username_field: name of field in model containing the username
+password_field: name of field in model containing the password
+access_log_field: optional name of field in the model to set with current datetime
+hash_algorithm: optional hash to apply to submitted password before doing database 
+comparison (md5 or sha1)
+
+***
+Edit the login template in auth/login/index.rhtml; 
+you need to keep the login[username] and login[password] fields named as they are;
+NB the name of the username field and password field in the database don't have to match
+these form element names
+
+***
+Developing your own authentication class
+
+Subclass AuthFactory::AuthBase; this can accept whatever parameters you like - 
+if you need extra parameters passed to your class in the configuration file, you can 
+simply add new lines below the "parameters:" heading in auth_config.yml; all 
+supplied parameters are converted into instance methods on the authenticator 
+instance when it is instantiated
+
+Supply a
+  check_credentials(username, password)
+method which returns true if credentials are OK, false otherwise
+
+Optionally supply an
+  authorized(logged_in, username, controller_name, action_name, id)
+method which will return true if username has access to controller_name/action_name/id;
+the default method returns true if the action is "login", "logout" or "check", 
+or if the logged_in token is set to true in the session - 
+controller_name, username and id are ignored; you could provide extra checks 
+on the full path to determine whether username can access a resource, or put 
+something other than true/false in the logged_in token and do some extra 
+filtering on this (e.g. you could store the user's access level)
+
+Edit auth_config.yml to supply the parameters your new subclass needs, and away you go
+
+***
+Mixing the module in
+
+The module is used in a mixin fashion, and adds several methods for handling authentication 
+actions to the host class:
+
+  login: display login page (i.e. render components/auth/login/index.rhtml)
+
+  check: check username/password against the authenticator instance
+
+  logout: logout user and redirect to index action of the current controller 
+  (edit LOGOUT_ACTION in the AuthFactory module if you're not happy with this default)
+
+  authorize: used to filter before an action is performed on the controller; calls the 
+  authorized? method on the authenticator instance

@@ -1,0 +1,28 @@
+<h1>Person list</h1>
+
+<% if !@people.empty? %>
+<table style="width:50%;">
+  <tr>
+  <th style="width:75%;">Name</th>
+  <th colspan="3" style="width:25%;" class="centred">Actions</th>
+  </tr>
+  
+<% for person in @people %>
+  <tr>
+  <td><%= person.name %></td>
+    <td class="centred"><%= link_to 'Show', :action => 'show', :id => person %></td>
+    <td class="centred"><%= link_to 'Edit', :action => 'edit', :id => person %></td>
+    <td class="centred"><%= link_to 'Delete', {:action => 'delete', :id => person}, 
+    :confirm => 'Are you sure you want to delete this person? All their quotations will be deleted as well' %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to 'Previous page', { :page => @person_pages.current.previous } if @person_pages.current.previous %>
+<%= link_to 'Next page', { :page => @person_pages.current.next } if @person_pages.current.next %></p>
+
+<% else %>
+
+<p><strong>No people are in the system; start by <%= link_to "adding a person", :controller => 'people', :action => 'new' %></strong></p>
+
+<% end %>

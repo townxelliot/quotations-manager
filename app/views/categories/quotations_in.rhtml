@@ -1,0 +1,8 @@
+<h1>Quotations in category '<%= @category.name %>'</h1>
+
+<p><%= link_to 'Back to list of all categories', :action => 'index' %></p>
+
+<div id="quotations">
+<%= render :partial => "quotations/list", 
+:locals => { :quotations => @category.quotations, :page => nil, :show_person => true } %>
+</div>

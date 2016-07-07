@@ -1,0 +1,123 @@
+body { background-color: #fff; color: #333; }
+
+body {
+  font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+  font-size:   0.8em;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 1em;
+}
+
+a:hover { background-color: #E1E6CF; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#ErrorExplanation {
+  width: 400px;
+  border: 2px solid 'red';
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#ErrorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 1em;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#ErrorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#ErrorExplanation ul li {
+  font-size: 1em;
+  list-style: square;
+}
+
+.formError {
+  color: red;
+  font-size: 0.8em;
+}
+.notice {
+  color: green;
+}
+table, tr, td, th {
+  border: thin #000 solid;
+  border-collapse:collapse;
+}
+td, th {
+  padding: 3px;
+  text-align: left;
+}
+.centred {
+  text-align: center;
+}
+#content {
+  width: 83%;
+  padding-left: 1%;
+  padding-right: 1%;
+  float: right;
+  margin-top: -0.6em;
+}
+#menu {
+  width: 13%;
+  padding-left: 1%;
+  padding-right: 1%;
+  float: left;
+  background-color: #E1E6CF;
+}
+#menu h1 {
+  font-size: 1.5em;
+}
+.quotation_content {
+  float: left;
+  width: 50%;
+  position: relative;
+}
+.quotation_metadata {
+  background-color: #E1E6CF;
+  padding: 0 1% 0 1%;
+  float: right;
+  width: 48%;
+  position: relative;
+}
+.quotation_actions {
+  clear:both;
+  background-color: #ACBFBF;
+  padding: 5px 1% 5px 1%;
+}
+#filter_form {
+  border: thin #333 solid;
+  padding-left: 0.5em;
+  padding-top: 0em;
+  padding-bottom: 3em;
+  background-color: #E1E6CF;
+}
+#filter_form_left {
+  float: left;
+  width: 50%;
+}
+#filter_form_right {
+  float: right;
+  padding-right: 1%;
+  text-align: left;
+  width: 49%;
+}
+.required {
+  color: #A00;
+}

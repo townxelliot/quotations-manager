@@ -1,0 +1,40 @@
+work_opinion:
+  id: 1
+  content: "Work is pretty good. *It's interesting.* Plus I get to investigate _lots_ of interesting technologies.
+
+  It's varied, too.
+  
+  And the people we meet are varied as well."
+  comment: "An honest opinion."
+  person_id: 1
+  recorded_on: <%= 1.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+homelife_summary:
+  id: 2
+  content: "Lots going on."
+  comment: "Not much to say about this one."
+  person_id: 1
+  recorded_on: <%= 1.day.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+importance_of_religion:
+  id: 3
+  content: "I think religion is an important factor in my life."
+  comment:
+  person_id: 2
+  recorded_on: <%= 2.days.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+home_hobbies:
+  id: 4
+  content: "It's very important to have a hobby. They can help you work productively."
+  comment:
+  person_id: 3
+  recorded_on: <%= 2.days.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+garden_likes:
+  id: 5
+  content: "I like my garden. It helps me relax."
+  comment:
+  person_id: 3
+  recorded_on: <%= 2.days.ago.strftime("%Y-%m-%d %H:%M:%S") %>
+work_dislike:
+  id: 6
+  content: "I don't really like work at all."
+  comment:
+  person_id: 3
+  recorded_on: <%= 2.days.ago.strftime("%Y-%m-%d %H:%M:%S") %>

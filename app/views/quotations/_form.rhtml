@@ -1,0 +1,37 @@
+<%= hidden_field 'quotation', 'id' %>
+
+<p><label for="quotation_content">Reference</label> <span class="required">(required)</span><br/>
+<%= text_field 'quotation', 'content' %></p>
+<%= error_message_on 'quotation', 'content' %>
+
+<p><label for="quotation_comment">Comment</label><br/>
+<%= text_area 'quotation', 'comment', :cols => 70, :rows => 3  %></p>
+
+<p><label for="quotation_recorded_on">Recorded on</label><br/>
+<%= date_select 'quotation', 'recorded_on'  %></p>
+
+<div id="categories_string">
+<div id="categories_string_input">
+<p><label for="quotation_categories_string">Categories</label> 
+<span class="required">(required; leave spaces between category names)</span><br/>
+<%= text_field 'quotation', 'categories_string', :size => 100 %></p>
+</div>
+<div id="categories_string_picker">
+<div id="category_picker">
+<em>Enter new categories
+<% if !@all_categories.empty? %>
+, or select existing ones:
+<% end %>
+</em><br/>
+<% for category in @all_categories %>
+<a <%= "style=color:red;" if @quotation.categories.include?(category) %> id="<%= category.name %>_link" href="javascript:alter_text('<%= category.name %>', document.getElementById('quotation_categories_string'), '<%= "%s_link" % category.name %>');"><%= category.name %></a>&nbsp;<% end %>
+</div>
+</div>
+<%= error_message_on 'quotation', 'categories_string' %>
+</div>
+
+<%= hidden_field 'quotation', 'person_id' %>
+
+<p><%= submit_tag 'Save' %></p>
+
+<hr />

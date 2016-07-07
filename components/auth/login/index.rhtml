@@ -1,0 +1,17 @@
+<h1>Please login to continue</h1>
+
+<%= start_form_tag :action => 'check' %>
+
+<p class="formLabel"><label for="login_username">Username</label></p>
+<p>
+<%= text_field 'login', 'username'  %>
+</p>
+
+<p class="formLabel"><label for="login_password">Password</label></p>
+<p>
+<%= password_field 'login', 'password'  %>
+</p>
+
+<p><%= submit_tag "Submit" %></p>
+
+<%= end_form_tag %>

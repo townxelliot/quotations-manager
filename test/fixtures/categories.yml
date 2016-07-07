@@ -1,0 +1,9 @@
+work_cat:
+  id: 1
+  name: work
+religion_cat:
+  id: 2
+  name: religion
+home_cat:
+  id: 3
+  name: home

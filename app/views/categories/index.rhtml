@@ -1,0 +1,18 @@
+<h1>Categories</h1>
+
+<p>
+<% if @categories.empty? %>
+<strong>No categories in the system; either <%= link_to "add a new person", :controller => 'people', :action => 'new' %>, or add a quotation to an existing person.</strong>
+<% else %>
+Click on a name below to show quotations in that category.
+<% end %>
+</p>
+
+<% if @category_pages.page_count > 1 %>
+<p><strong>Page:</strong> <%= pagination_links(@category_pages) %></p>
+<% end %>
+
+<% for category in @categories %>
+<p><%= link_to category.name, :action => 'quotations_in', :id => category %> 
+[<%= link_to 'Rename', :action => 'edit', :id => category %>]</p>
+<% end %>

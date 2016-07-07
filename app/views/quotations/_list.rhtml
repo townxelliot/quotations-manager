@@ -1,0 +1,31 @@
+<% for quotation in quotations %>
+
+<div class="quotation">
+<div class="quotation_content"><%= my_textilize(quotation.content) %></div>
+<div class="quotation_metadata">
+
+<% if show_person %>
+<p><strong>Attached to person:</strong> 
+<%= link_to quotation.person.name, :controller => 'people', :action => 'show', 
+:id => quotation.person.id, :category_id => @category.id %>
+</p>
+<% end %>
+
+<p><strong>Description:</strong></p>
+<%= quotation.comment == "" ? "<p><em>Not specified</em></p>" : my_textilize(quotation.comment) %>
+<p><strong>Categories:</strong> 
+<%= quotation.categories.collect { |c| c.name }.join(", ") %>
+</p>
+<p><strong>Recorded on:</strong> <%= quotation.recorded_on %></p>
+<p>
+</div>
+</div>
+<p class="quotation_actions">
+<%= link_to 'Edit quotation', { :controller => 'people', :action => 'show_with_edit_q_form', :id => quotation.person_id,
+:quotation_id => quotation, :page => page } %> | 
+<%= link_to 'Delete quotation', 
+{:controller => 'people', :action => 'delete_quotation', :id => quotation.person_id, :quotation_id => quotation, 
+:page => page}, :confirm => "Are you sure you want to delete this quotation?" %>
+</p>
+
+<% end %>

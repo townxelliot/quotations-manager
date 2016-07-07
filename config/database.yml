@@ -1,0 +1,7 @@
+development:
+  adapter: mysql
+  database: qm
+  host: 127.0.0.1
+  username: username
+  password: password
+  socket: /var/lib/mysql/mysql.sock
